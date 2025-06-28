@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Fnext Solutions</h1>
+    <h2>Internship Registration</h2>
+    <p>Strive to improve your skills at fnext solutions</p>
+    <form id="registration-form">
+        
+    <fieldset>
+        <label for="first-name">First Name:
+            <input type="text" id="first-name" name="first-name" required/>
+        </label>
+        <label for="last-name">
+            Last Name: <input type="text" name="last-name" id="last-name" required/>
+        </label>
+        <label for="email">
+            Email id:<input type="email" name="email" id="email" required/>
+        </label>
+        <label for="password">
+            Password:
+            <input type="password"  id="password" [a-z0-9]{8,} name="password"/>
+        </label>
+    </fieldset>
+    <fieldset >
+        <legend>Gender</legend>
+        <label class="inline">
+            Male <input type="radio" name="gender" checked class="inline"/>
+        </label>
+        <label >
+            Female: <input type="radio" name="gender" class="inline"/>
+        </label></fieldset>
+        
+    <fieldset>
+        <legend>Fnext Solutions</legend>
+        <label for="age">
+            Age: <input type="number"  min="17" max="30" id="age"/>
+        </label>
+        <label for="college-name">College Name:
+            <input type="text"  name="college-name" required id="college-name"/>
+        </label>
+        <label for="resume">Upload your resume
+            <input type="file" name="resume" requied id="resume"/>
+        </label>
+        <label for="Position">Choose Position
+          <select id="position">
+            <option value="1">Select any</option>
+            <option value="2">Web Intern</option>
+            <option value="3">Java Intern</option>
+            <option value="4">Python Intern</option>
+          </select>
+        </label>
+        <label for="bio">Explain your skills
+            <textarea rows="5" cols="20" placeholder="coding bee.." id="bio"></textarea>
+        </label>
+    </fieldset>
+    <label for="terms">
+        <input id="terms" type="checkbox" required name="terms" class="inline"/> I agree for the <a href="">Terms and Conditions</a>
+    </label>
+    <label>
+        <button>Submit</button>
+    </label>
+    </form>
+
+    <script>
+document.getElementById("registration-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const firstName = document.getElementById("first-name").value.trim();
+  const lastName = document.getElementById("last-name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const age = document.getElementById("age").value.trim();
+  const college = document.getElementById("college-name").value.trim();
+  const resume = document.getElementById("resume").value;
+  const position = document.getElementById("position").value;
+  const bio = document.getElementById("bio").value.trim();
+  const terms = document.getElementById("terms").checked;
+ 
+  if (!firstName || !lastName || !email || !password || !age || !college || !resume || !bio) {
+    alert("Please fill in all the required fields.");
+    return;
+  }
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+  if (password.length < 6 || !/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+    alert("Password must be at least 6 characters long and include letters and numbers.");
+    return;
+  }
+  const ageValue = parseInt(age);
+  if (ageValue < 17 || ageValue > 30) {
+    alert("Age must be between 17 and 30.");
+    return;
+  }
+  if (position === "1") {
+    alert("Please select a position.");
+    return;
+  }
+  if (!terms) {
+    alert("You must agree to the terms and conditions.");
+    return;
+  }
+  alert(" Registered Successfully!");
+});
+</script>
+</body>

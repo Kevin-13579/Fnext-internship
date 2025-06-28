@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>Login</title>
+    </head>
+    <body>
+        <div>
+            <h1>Login</h1>
+            <form class="container" id="login-form">
+                <input id="email" type="text" placeholder="Enter your email" required>
+                <input id="password" type="password" placeholder="Enter your password" required>
+                <button type="submit">Login</button>           
+             </form>
+             <p>Not registered? <a href="file:///C:/Users/xxxx/Desktop/Internship/Registration%20Form/index.html">Registor</a></p>
+        </div>
+<script>
+  document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+    if (password === "") {
+      alert("Please enter your password.");
+      return;
+    }
+    console.timeLog(I);
+  });
+</script>
+   </body>
+</html> 
